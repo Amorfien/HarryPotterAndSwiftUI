@@ -7,18 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		184CC0F12A1E109A006E38FA /* APIservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184CC0F02A1E109A006E38FA /* APIservice.swift */; };
 		18A822252A1D22E400648BFF /* HarryPotterAndSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A822242A1D22E400648BFF /* HarryPotterAndSwiftUIApp.swift */; };
 		18A822272A1D22E400648BFF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A822262A1D22E400648BFF /* ContentView.swift */; };
 		18A822292A1D22E500648BFF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A822282A1D22E500648BFF /* Assets.xcassets */; };
 		18A8222C2A1D22E500648BFF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18A8222B2A1D22E500648BFF /* Preview Assets.xcassets */; };
+		18A822332A1D232B00648BFF /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A822322A1D232B00648BFF /* Character.swift */; };
+		18A822352A1D278D00648BFF /* LocalCaracters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A822342A1D278D00648BFF /* LocalCaracters.swift */; };
+		18A822372A1D2D8200648BFF /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A822362A1D2D8200648BFF /* InfoView.swift */; };
+		18A822392A1D2EF500648BFF /* InfoRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A822382A1D2EF500648BFF /* InfoRowView.swift */; };
+		18A8223B2A1D2F4000648BFF /* InfoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8223A2A1D2F4000648BFF /* InfoDetailsView.swift */; };
+		18A8223D2A1D383000648BFF /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8223C2A1D383000648BFF /* HelloView.swift */; };
+		18A8223F2A1D398C00648BFF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A8223E2A1D398C00648BFF /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		184CC0F02A1E109A006E38FA /* APIservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIservice.swift; sourceTree = "<group>"; };
 		18A822212A1D22E400648BFF /* HarryPotterAndSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarryPotterAndSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A822242A1D22E400648BFF /* HarryPotterAndSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarryPotterAndSwiftUIApp.swift; sourceTree = "<group>"; };
 		18A822262A1D22E400648BFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		18A822282A1D22E500648BFF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18A8222B2A1D22E500648BFF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		18A822322A1D232B00648BFF /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
+		18A822342A1D278D00648BFF /* LocalCaracters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCaracters.swift; sourceTree = "<group>"; };
+		18A822362A1D2D8200648BFF /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		18A822382A1D2EF500648BFF /* InfoRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoRowView.swift; sourceTree = "<group>"; };
+		18A8223A2A1D2F4000648BFF /* InfoDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailsView.swift; sourceTree = "<group>"; };
+		18A8223C2A1D383000648BFF /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
+		18A8223E2A1D398C00648BFF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +69,14 @@
 			children = (
 				18A822242A1D22E400648BFF /* HarryPotterAndSwiftUIApp.swift */,
 				18A822262A1D22E400648BFF /* ContentView.swift */,
+				18A822402A1D571800648BFF /* Model */,
+				18A822412A1D573B00648BFF /* LocalStorage */,
+				18A822422A1D576100648BFF /* APIservice */,
+				18A822362A1D2D8200648BFF /* InfoView.swift */,
+				18A822382A1D2EF500648BFF /* InfoRowView.swift */,
+				18A8223A2A1D2F4000648BFF /* InfoDetailsView.swift */,
+				18A8223C2A1D383000648BFF /* HelloView.swift */,
+				18A8223E2A1D398C00648BFF /* SettingsView.swift */,
 				18A822282A1D22E500648BFF /* Assets.xcassets */,
 				18A8222A2A1D22E500648BFF /* Preview Content */,
 			);
@@ -65,6 +89,30 @@
 				18A8222B2A1D22E500648BFF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		18A822402A1D571800648BFF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				18A822322A1D232B00648BFF /* Character.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		18A822412A1D573B00648BFF /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				18A822342A1D278D00648BFF /* LocalCaracters.swift */,
+			);
+			path = LocalStorage;
+			sourceTree = "<group>";
+		};
+		18A822422A1D576100648BFF /* APIservice */ = {
+			isa = PBXGroup;
+			children = (
+				184CC0F02A1E109A006E38FA /* APIservice.swift */,
+			);
+			path = APIservice;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +185,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				184CC0F12A1E109A006E38FA /* APIservice.swift in Sources */,
+				18A822332A1D232B00648BFF /* Character.swift in Sources */,
+				18A8223D2A1D383000648BFF /* HelloView.swift in Sources */,
 				18A822272A1D22E400648BFF /* ContentView.swift in Sources */,
+				18A8223F2A1D398C00648BFF /* SettingsView.swift in Sources */,
+				18A822352A1D278D00648BFF /* LocalCaracters.swift in Sources */,
+				18A822392A1D2EF500648BFF /* InfoRowView.swift in Sources */,
+				18A8223B2A1D2F4000648BFF /* InfoDetailsView.swift in Sources */,
+				18A822372A1D2D8200648BFF /* InfoView.swift in Sources */,
 				18A822252A1D22E400648BFF /* HarryPotterAndSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +326,7 @@
 				DEVELOPMENT_TEAM = 4V4XBFRF5Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = HPDb;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +356,7 @@
 				DEVELOPMENT_TEAM = 4V4XBFRF5Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = HPDb;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
