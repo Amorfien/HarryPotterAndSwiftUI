@@ -73,9 +73,15 @@ struct Character: Codable, Identifiable {
         self.actor = try container.decode(String.self, forKey: .actor)
         self.alive = try container.decode(Bool.self, forKey: .alive)
         self.image = try container.decode(String.self, forKey: .image)
-        if self.name == "Albus Dumbledore" {
-            self.image = "https://pm1.narvii.com/7743/aad5ab12b083be42919c06becc53d9cfb1e24d0dr1-750-563v2_00.jpg"
+        switch self.name {
+        case "Albus Dumbledore": self.image = "https://pm1.narvii.com/7743/aad5ab12b083be42919c06becc53d9cfb1e24d0dr1-750-563v2_00.jpg"
+        case "James Potter": self.image = "https://static.wikia.nocookie.net/harrypotter/images/1/10/James_Potter_I_Deathly_Hallows.jpg"
+        case "Lily Potter": self.image = "https://static.wikia.nocookie.net/harrypotter/images/c/ce/Lily_Potter1.jpg"
+        default: return
         }
+//        if self.name == "Albus Dumbledore" {
+//            self.image = "https://pm1.narvii.com/7743/aad5ab12b083be42919c06becc53d9cfb1e24d0dr1-750-563v2_00.jpg"
+//        }
     }
 
 

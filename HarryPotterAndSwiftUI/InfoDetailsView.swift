@@ -19,14 +19,15 @@ struct InfoDetailsView: View {
                 imagePhase.image?
                     .resizable()
                     .scaledToFit()
-                    .padding(.top, 12)
+                    .cornerRadius(15)
+                    .padding(.horizontal, 50)
                     .shadow(radius: 10)
             })
 
 
             // text decription
-            VStack(alignment: .leading) {
-                HStack{
+            VStack() {
+                HStack {
                     Text(character.name)
                         .font(.title2).fontWeight(.bold)
                         .foregroundColor(.white)
@@ -37,25 +38,50 @@ struct InfoDetailsView: View {
                             Text("❌")
                         }
                 }
-                Text(character.alternateNames.first ?? "")
+                .padding(.horizontal, 40)
+
+                Text(character.alternateNames.joined(separator: ", "))
                     .font(.caption)
                     .foregroundColor(Color(uiColor: .systemGray5))
 
                 Divider()
 
-                VStack(alignment: .leading){
-                    Text("Actor: \(character.actor)")
-                    Text("Ancestry: \(character.ancestry)")
-                    Text("Eye color: \(character.eyeColour), hair color: \(character.hairColour)")
-                    Text("\(character.yearOfBirth ?? 0000)")
+                VStack {
+                    makeHStack("Species:", character.species)
+                    makeHStack("Wizard:", character.wizard ? "✔️" : "✖️")
+                    makeHStack("House:", character.house.rawValue)
+                    makeHStack("Gender:", character.gender == .female ? "♀" : "♂")
+                    makeHStack("Ancestry:", character.ancestry)
+                    makeHStack("Eye color:", character.eyeColour)
+                    makeHStack("Hair color:", character.hairColour)
+                    makeHStack("Year of birth", String(character.yearOfBirth ?? 0))
+                    makeHStack("Patronus:", character.patronus)
+                    makeHStack("Student:", character.hogwartsStudent ? "✔️" : "✖️")
                 }
-                .foregroundColor(Color(uiColor: .systemGray3))
+                .foregroundColor(Color(uiColor: .systemGray4))
+                .padding(.horizontal)
+                VStack {
+                    makeHStack("Staff:", character.hogwartsStaff ? "✔️" : "✖️")
+                    makeHStack("Actor:", character.actor)
+                }
+                .foregroundColor(Color(uiColor: .systemGray4))
+                .padding(.horizontal)
             }
             .padding()
         }
         .navigationTitle(character.name)
         .background(Color(.darkGray))
     }
+
+    private func makeHStack(_ key: String, _ value: String) -> some View {
+        return HStack {
+            Text(key)
+            Spacer()
+            Text(value)
+            Divider()
+        }
+    }
+
 }
 
 struct InfoDetailsView_Previews: PreviewProvider {
