@@ -6,10 +6,6 @@
 	<dict>
 		<key>UIImageName</key>
 		<string>HPlogo</string>
-		<key>UIImageRespectsSafeAreaInsets</key>
-		<true/>
-		<key>UIColorName</key>
-		<string>rowColor</string>
 	</dict>
 </dict>
 </plist>

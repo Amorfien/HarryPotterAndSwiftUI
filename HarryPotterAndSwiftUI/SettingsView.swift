@@ -13,7 +13,7 @@ struct SettingsView: View {
     @Binding var titleOn: Bool
 
     @Binding var slider: Double
-//    @State private var isChanging = false
+    @State private var isChanging = false
 
     var body: some View {
 
@@ -41,16 +41,20 @@ struct SettingsView: View {
             Section {
 
                 Text("You can change row width here:")
-                Slider(value: $slider , in: 30...120)
+                Slider(value: $slider , in: 45...150, onEditingChanged: { change in
+                    isChanging = change
+                })
                     .padding(.bottom)
-                InfoRowView(character: nonLocalDumbledore, rowHeight: $slider)
-                    .overlay {
-                        Rectangle().stroke()
-                    }
-                    .padding(.vertical, 30)
-                    .padding(.horizontal, -20)
-                    .frame(height: 150)
 
+                if isChanging {
+                    InfoRowView(character: nonLocalDumbledore, rowHeight: $slider)
+                        .overlay {
+                            Rectangle().stroke()
+                        }
+                        .padding(.vertical, 30)
+                        .padding(.horizontal, -20)
+                        .frame(height: 150)
+                }
             }
 
         }
