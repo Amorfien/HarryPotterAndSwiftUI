@@ -12,16 +12,17 @@ struct InfoDetailsView: View {
     var character: Character
 
     var body: some View {
-        // wrap a post for vertical scrolling
         ScrollView {
-            // full width image
             AsyncImage(url: URL(string: character.image), content: { imagePhase in
                 imagePhase.image?
                     .resizable()
                     .scaledToFit()
-                    .cornerRadius(15)
+                    .cornerRadius(20)
+                    .overlay(content: {
+                        RoundedRectangle(cornerRadius: 20, style: .circular).stroke(.foreground, lineWidth: 5)
+                    })
                     .padding(.horizontal, 50)
-                    .shadow(radius: 10)
+                    .shadow(radius: 15)
             })
 
 
@@ -32,17 +33,17 @@ struct InfoDetailsView: View {
                         .font(.title2).fontWeight(.bold)
                         .foregroundColor(.white)
                     Spacer()
-                        if character.alive {
-                            Text("✅")
-                        } else {
-                            Text("❌")
-                        }
+                    Text(character.alive ? "✅" : "❌")
                 }
                 .padding(.horizontal, 40)
 
-                Text(character.alternateNames.joined(separator: ", "))
-                    .font(.caption)
-                    .foregroundColor(Color(uiColor: .systemGray5))
+                HStack {
+                    Text(character.alternateNames.joined(separator: ", "))
+                        .font(.caption)
+                        .foregroundColor(Color(uiColor: .systemGray3))
+                    Spacer()
+                }
+                .padding(.horizontal, 40)
 
                 Divider()
 
@@ -58,19 +59,19 @@ struct InfoDetailsView: View {
                     makeHStack("Patronus:", character.patronus)
                     makeHStack("Student:", character.hogwartsStudent ? "✔️" : "✖️")
                 }
-                .foregroundColor(Color(uiColor: .systemGray4))
+                .foregroundColor(Color(uiColor: .systemGray6))
                 .padding(.horizontal)
                 VStack {
                     makeHStack("Staff:", character.hogwartsStaff ? "✔️" : "✖️")
                     makeHStack("Actor:", character.actor)
                 }
-                .foregroundColor(Color(uiColor: .systemGray4))
+                .foregroundColor(Color(uiColor: .systemGray6))
                 .padding(.horizontal)
             }
             .padding()
         }
-        .navigationTitle(character.name)
-        .background(Color(.darkGray))
+//        .navigationTitle(character.name)
+        .background(Color(.gray))
     }
 
     private func makeHStack(_ key: String, _ value: String) -> some View {

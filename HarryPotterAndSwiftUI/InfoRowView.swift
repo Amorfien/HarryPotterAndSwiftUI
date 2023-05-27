@@ -10,7 +10,7 @@ import SwiftUI
 struct InfoRowView: View {
 
     let character: Character
-//    let url = URL(string: character.image)
+    var rowHeight = 68.0
 
     var body: some View {
         HStack {
@@ -20,30 +20,37 @@ struct InfoRowView: View {
                     .resizable()
                     .scaledToFill()
                     .clipShape(Circle())
-                    .frame(width: 60, height: 60)
-                    .padding(.trailing, 12)
+                    .frame(width: rowHeight - 8, height: rowHeight - 8)
+                    .padding(.leading, 4)
             })
 
             Text(character.name)
+                .padding(.leading, 8)
+                .lineLimit(2)
+                .minimumScaleFactor(0.5)
 
             Spacer()
             if character.wizard {
-                if character.name == "Rubeus Hagrid" {
-                    Text("🌂")
-                } else {
-                    Text("🪄")
-                }
+                Text(character.name == "Rubeus Hagrid" ? "🌂" : "🪄")
+                    .font(.largeTitle)
+                    .padding(.bottom, 4)
             }
             Image(character.house.rawValue)
                 .resizable()
                 .scaledToFit()
-                .frame(width: 50, height: 50)
+                .frame(width: 50, height: rowHeight * 0.75)
         }
+        .frame(height: rowHeight)
+        .background(Color("rowColor"))
     }
 }
 
 struct InfoRowView_Previews: PreviewProvider {
     static var previews: some View {
-        InfoRowView(character: nonLocalDumbledore)
+        Group {
+            InfoRowView(character: nonLocalDumbledore)
+            InfoRowView(character: localCharacters[3])
+        }
+        .previewLayout(.fixed(width: 300, height: 70))
     }
 }

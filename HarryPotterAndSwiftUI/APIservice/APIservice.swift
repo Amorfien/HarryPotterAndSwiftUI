@@ -38,7 +38,7 @@ final class APIservice {
                     let characters = try JSONDecoder().decode([Character].self, from: data)
                     completion(characters)
                 } catch {}
-            case .failure(let error): print(error)
+            case .failure:
                 completion([])
             }
         }

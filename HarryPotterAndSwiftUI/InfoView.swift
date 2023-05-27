@@ -9,6 +9,8 @@ import SwiftUI
 
 struct InfoView: View {
 
+    var titleOn: Bool
+
     @State private var fullData = false
     @State private var listSource = localCharacters
 
@@ -22,15 +24,16 @@ struct InfoView: View {
                     } label: {
                         InfoRowView(character: character)
                     }
+//                    .listRowSeparator(.hidden)
+                    .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: -18))
                 }
-                .navigationTitle("Harry Potter & Co")
+                .navigationTitle(titleOn ? "Harry Potter & Co" : "")
                 .listStyle(.plain)
 
                 Divider()
 
                 if !fullData {
                     Button {
-                        print("123")
                         let apiService = APIservice()
                         apiService.getAllCharacters { characters in
                             self.listSource = characters
@@ -56,6 +59,6 @@ struct InfoView: View {
 
 struct InfoView_Previews: PreviewProvider {
     static var previews: some View {
-        InfoView()
+        InfoView(titleOn: true)
     }
 }

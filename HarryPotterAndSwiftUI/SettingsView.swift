@@ -9,40 +9,42 @@ import SwiftUI
 
 struct SettingsView: View {
 
-    @State private var toggler = false
-    @State private var slider = 50.0
-    @State private var picker = 5
-    let randomArray = ["1", "76", "5"," 7", "2", "12", "24", "14", "34"]
+    @Environment(\.colorScheme) var colorScheme
+    @Binding var titleOn: Bool
+
+    @State private var slider = 60.0
 
     var body: some View {
 
         Form {
             Section {
-                Text("Section 1")
+                Text(colorScheme == .dark ? "Dark Theme enabled" : "Light Theme enabled")
+                    .padding(.vertical)
             }
             Section {
-                Toggle("HomeWorkSUI-1", isOn: $toggler)
-                Text(toggler ? "Зачёт 😃" : "Незачёт 😢")
+                Toggle("Display first screen title", isOn: $titleOn)
+                    .padding(.top)
+                Text("Navigation title is " + (titleOn ? "enable" : "disable"))
+                    .padding(.bottom)
+                    .font(.callout)
             }
-            .padding(.vertical, 12)
 
-            Slider(value: $slider , in: 0...100)
+
 
             Section {
 
-                Picker(selection: $picker) {
-                    ForEach(0..<randomArray.count) { index in
-                        Text(self.randomArray[index])
+                Slider(value: $slider , in: 20...100)
+                    .padding(.bottom)
+                InfoRowView(character: nonLocalDumbledore, rowHeight: slider)
+                    .overlay {
+                        Rectangle().stroke()
                     }
-
-                } label: {
-                    Text("Some picker")
-                }
-                .pickerStyle(.wheel)
-                .frame(width: 100)
-
+                    .padding(.vertical, 30)
+                    .padding(.horizontal, -20)
 
             }
+//            .frame(height: 100)
+
 
 
 
@@ -56,6 +58,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(titleOn: .constant(true))
     }
 }
