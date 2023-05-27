@@ -63,6 +63,7 @@ struct InfoDetailsView: View {
                 .padding(.horizontal)
                 VStack {
                     makeHStack("Staff:", character.hogwartsStaff ? "✔️" : "✖️")
+                    Divider()
                     makeHStack("Actor:", character.actor)
                 }
                 .foregroundColor(Color(uiColor: .systemGray6))

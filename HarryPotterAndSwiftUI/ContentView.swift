@@ -10,12 +10,13 @@ import SwiftUI
 struct ContentView: View {
 
     @AppStorage("title") private var titleOn: Bool = true
+    @State private var slider = 68.0
 
     var body: some View {
 
         TabView() {
 
-            InfoView(titleOn: titleOn)
+            InfoView(titleOn: titleOn, rowHeight: $slider)
                 .tabItem {
                     Label("Database", systemImage: "person.3.fill")
                 }
@@ -23,12 +24,13 @@ struct ContentView: View {
                 .tabItem {
                     Label("Hello", systemImage: "globe")
                 }
-            SettingsView(titleOn: $titleOn)
+            SettingsView(titleOn: $titleOn, slider: $slider)
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
 
         }
+        .tint(.primary)
 
     }
 }

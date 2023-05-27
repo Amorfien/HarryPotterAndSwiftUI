@@ -12,14 +12,21 @@ struct SettingsView: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var titleOn: Bool
 
-    @State private var slider = 60.0
+    @Binding var slider: Double
+//    @State private var isChanging = false
 
     var body: some View {
 
         Form {
             Section {
-                Text(colorScheme == .dark ? "Dark Theme enabled" : "Light Theme enabled")
-                    .padding(.vertical)
+                HStack {
+                    Text(colorScheme == .dark ? "Dark Theme enabled" : "Light Theme enabled")
+                        .padding(.vertical)
+                    Spacer()
+                    Image(systemName: colorScheme == .dark ? "moon.fill" : "sun.max.fill")
+                        .foregroundColor(.yellow)
+                        .imageScale(.large)
+                }
             }
             Section {
                 Toggle("Display first screen title", isOn: $titleOn)
@@ -33,31 +40,25 @@ struct SettingsView: View {
 
             Section {
 
-                Slider(value: $slider , in: 20...100)
+                Text("You can change row width here:")
+                Slider(value: $slider , in: 30...120)
                     .padding(.bottom)
-                InfoRowView(character: nonLocalDumbledore, rowHeight: slider)
+                InfoRowView(character: nonLocalDumbledore, rowHeight: $slider)
                     .overlay {
                         Rectangle().stroke()
                     }
                     .padding(.vertical, 30)
                     .padding(.horizontal, -20)
+                    .frame(height: 150)
 
             }
-//            .frame(height: 100)
-
-
-
 
         }
-
-
-
-
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(titleOn: .constant(true))
+        SettingsView(titleOn: .constant(true), slider: .constant(60))
     }
 }

@@ -10,7 +10,7 @@ import SwiftUI
 struct InfoRowView: View {
 
     let character: Character
-    var rowHeight = 68.0
+    @Binding var rowHeight: Double// = 68.0
 
     var body: some View {
         HStack {
@@ -48,8 +48,8 @@ struct InfoRowView: View {
 struct InfoRowView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            InfoRowView(character: nonLocalDumbledore)
-            InfoRowView(character: localCharacters[3])
+            InfoRowView(character: nonLocalDumbledore, rowHeight: .constant(68))
+//            InfoRowView(character: localCharacters[3])
         }
         .previewLayout(.fixed(width: 300, height: 70))
     }

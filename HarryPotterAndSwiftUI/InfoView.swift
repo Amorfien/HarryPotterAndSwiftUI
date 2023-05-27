@@ -11,6 +11,8 @@ struct InfoView: View {
 
     var titleOn: Bool
 
+    @Binding var rowHeight: Double
+
     @State private var fullData = false
     @State private var listSource = localCharacters
 
@@ -22,15 +24,18 @@ struct InfoView: View {
                     NavigationLink {
                         InfoDetailsView(character: character)
                     } label: {
-                        InfoRowView(character: character)
+                        InfoRowView(character: character, rowHeight: $rowHeight)
                     }
+                    .padding(.leading, 12)
 //                    .listRowSeparator(.hidden)
                     .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: -18))
+                    .background(Color("rowColor").opacity(0.9))
                 }
                 .navigationTitle(titleOn ? "Harry Potter & Co" : "")
                 .listStyle(.plain)
 
-                Divider()
+//                Divider()
+//                Spacer()
 
                 if !fullData {
                     Button {
@@ -43,15 +48,16 @@ struct InfoView: View {
                         Text("Download full data")
                     }
                     .padding(16)
-                    .foregroundColor(.blue)
-                    .background(Color.mint.opacity(0.5))
+                    .foregroundColor(.secondary)
+                    .background(Color.brown)
                     .font(.title2)
                     .bold()
                     .clipShape(Capsule())
                     .shadow(radius: 10)
                 }
             }
-            .padding(.bottom)
+            .padding(.bottom, 20)
+            .background(Color("rowColor").opacity(0.8))
 
         }
     }
@@ -59,6 +65,6 @@ struct InfoView: View {
 
 struct InfoView_Previews: PreviewProvider {
     static var previews: some View {
-        InfoView(titleOn: true)
+        InfoView(titleOn: true, rowHeight: .constant(68))
     }
 }
