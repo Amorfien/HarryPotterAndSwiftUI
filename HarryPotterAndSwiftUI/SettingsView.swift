@@ -9,53 +9,60 @@ import SwiftUI
 
 struct SettingsView: View {
 
-    @State private var toggler = false
-    @State private var slider = 50.0
-    @State private var picker = 5
-    let randomArray = ["1", "76", "5"," 7", "2", "12", "24", "14", "34"]
+    @Environment(\.colorScheme) var colorScheme
+    @Binding var titleOn: Bool
+
+    @Binding var slider: Double
+    @State private var isChanging = false
 
     var body: some View {
 
         Form {
             Section {
-                Text("Section 1")
-            }
-            Section {
-                Toggle("HomeWorkSUI-1", isOn: $toggler)
-                Text(toggler ? "Зачёт 😃" : "Незачёт 😢")
-            }
-            .padding(.vertical, 12)
-
-            Slider(value: $slider , in: 0...100)
-
-            Section {
-
-                Picker(selection: $picker) {
-                    ForEach(0..<randomArray.count) { index in
-                        Text(self.randomArray[index])
-                    }
-
-                } label: {
-                    Text("Some picker")
+                HStack {
+                    Text(colorScheme == .dark ? "Dark Theme enabled" : "Light Theme enabled")
+                        .padding(.vertical)
+                    Spacer()
+                    Image(systemName: colorScheme == .dark ? "moon.fill" : "sun.max.fill")
+                        .foregroundColor(.yellow)
+                        .imageScale(.large)
                 }
-                .pickerStyle(.wheel)
-                .frame(width: 100)
-
-
+            }
+            Section {
+                Toggle("Display first screen title", isOn: $titleOn)
+                    .padding(.top)
+                Text("Navigation title is " + (titleOn ? "enable" : "disable"))
+                    .padding(.bottom)
+                    .font(.callout)
             }
 
 
+
+            Section {
+
+                Text("You can change row width here:")
+                Slider(value: $slider , in: 45...150, onEditingChanged: { change in
+                    isChanging = change
+                })
+                    .padding(.bottom)
+
+                if isChanging {
+                    InfoRowView(character: nonLocalDumbledore, rowHeight: $slider)
+                        .overlay {
+                            Rectangle().stroke()
+                        }
+                        .padding(.vertical, 30)
+                        .padding(.horizontal, -20)
+                        .frame(height: 150)
+                }
+            }
 
         }
-
-
-
-
     }
 }
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(titleOn: .constant(true), slider: .constant(60))
     }
 }

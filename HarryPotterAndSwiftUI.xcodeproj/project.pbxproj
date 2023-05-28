@@ -23,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		184CC0F02A1E109A006E38FA /* APIservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIservice.swift; sourceTree = "<group>"; };
+		1858FA5F2A2228F900609E53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		18A822212A1D22E400648BFF /* HarryPotterAndSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HarryPotterAndSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A822242A1D22E400648BFF /* HarryPotterAndSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HarryPotterAndSwiftUIApp.swift; sourceTree = "<group>"; };
 		18A822262A1D22E400648BFF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +68,7 @@
 		18A822232A1D22E400648BFF /* HarryPotterAndSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				1858FA5F2A2228F900609E53 /* Info.plist */,
 				18A822242A1D22E400648BFF /* HarryPotterAndSwiftUIApp.swift */,
 				18A822262A1D22E400648BFF /* ContentView.swift */,
 				18A822402A1D571800648BFF /* Model */,
@@ -326,10 +328,12 @@
 				DEVELOPMENT_TEAM = 4V4XBFRF5Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HarryPotterAndSwiftUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HPDb;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -356,10 +360,12 @@
 				DEVELOPMENT_TEAM = 4V4XBFRF5Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HarryPotterAndSwiftUI/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HPDb;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
