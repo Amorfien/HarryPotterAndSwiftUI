@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
 
     @AppStorage("title") private var titleOn: Bool = true
-    @State private var slider = 68.0
+//    @State private var slider = 68.0
+    @AppStorage("height") private var slider = 68.0
 
     var body: some View {
 

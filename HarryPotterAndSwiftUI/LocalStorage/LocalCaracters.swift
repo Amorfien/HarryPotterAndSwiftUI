@@ -7,7 +7,7 @@
 
 import Foundation
 
-var localCharacters = [harryPotter, ronWeasley, hermione, draco]
+var localCharacters = [harryPotter, hermione, ronWeasley, draco, nonLocalDumbledore]
 
 fileprivate let harryPotter = Character(id: "9e3f7ce4-b9a7-4244-b709-dae5c1f1d4a8", name: "Harry Potter", alternateNames: ["The Boy Who Lived","The Chosen One"], species: "human", gender: .male, house: .gryffindor, yearOfBirth: 1980, wizard: true, ancestry: "half-blood", eyeColour: "green", hairColour: "black", wand: Wand(wood: "holly", core: "phoenix feather", length: 11), patronus: "stag", hogwartsStudent: true, hogwartsStaff: false, actor: "Daniel Radcliffe", alive: true, image: "https://ik.imagekit.io/hpapi/harry.jpg")
 

@@ -19,10 +19,10 @@ struct InfoDetailsView: View {
                     .scaledToFit()
                     .cornerRadius(20)
                     .overlay(content: {
-                        RoundedRectangle(cornerRadius: 20, style: .circular).stroke(.foreground, lineWidth: 5)
+                        RoundedRectangle(cornerRadius: 20, style: .circular).stroke(Color(uiColor: .systemGray4), lineWidth: 2)
                     })
                     .padding(.horizontal, 50)
-                    .shadow(radius: 15)
+                    .shadow(color: Color(uiColor: .systemGray5), radius: 15)
             })
 
 
@@ -38,7 +38,7 @@ struct InfoDetailsView: View {
                 .padding(.horizontal, 40)
 
                 HStack {
-                    Text(character.alternateNames.joined(separator: ", "))
+                    Text(character.alternateNames.joined(separator: "\n"))
                         .font(.caption)
                         .foregroundColor(Color(uiColor: .systemGray3))
                     Spacer()
@@ -47,27 +47,38 @@ struct InfoDetailsView: View {
 
                 Divider()
 
-                VStack {
-                    makeHStack("Species:", character.species)
-                    makeHStack("Wizard:", character.wizard ? "✔️" : "✖️")
-                    makeHStack("House:", character.house.rawValue)
-                    makeHStack("Gender:", character.gender == .female ? "♀" : "♂")
-                    makeHStack("Ancestry:", character.ancestry)
-                    makeHStack("Eye color:", character.eyeColour)
-                    makeHStack("Hair color:", character.hairColour)
-                    makeHStack("Year of birth", String(character.yearOfBirth ?? 0))
-                    makeHStack("Patronus:", character.patronus)
-                    makeHStack("Student:", character.hogwartsStudent ? "✔️" : "✖️")
+                HStack{
+                    VStack {
+                        VStack {
+                            makeHStack("Species:", character.species)
+                            makeHStack("Wizard:", character.wizard ? "✔️" : "✖️")
+                            makeHStack("House:", character.house.rawValue)
+                            makeHStack("Gender:", character.gender == .female ? "♀" : "♂")
+                            makeHStack("Ancestry:", character.ancestry)
+                            makeHStack("Eye color:", character.eyeColour)
+                            makeHStack("Hair color:", character.hairColour)
+                            makeHStack("Year of birth", String(character.yearOfBirth ?? 0))
+                            makeHStack("Patronus:", character.patronus)
+                            makeHStack("Student:", character.hogwartsStudent ? "✔️" : "✖️")
+                        }
+                        .foregroundColor(Color(uiColor: .systemGray6))
+                        .padding(.horizontal)
+                        VStack {
+                            makeHStack("Staff:", character.hogwartsStaff ? "✔️" : "✖️")
+                            Divider()
+                            makeHStack("Actor:", character.actor)
+                        }
+                        .foregroundColor(Color(uiColor: .systemGray6))
+                        .padding(.horizontal)
+                    }
+                    if character.house != .empty {
+                        Image(character.house.rawValue + "Flag")
+                            .resizable()
+                        //                        .aspectRatio(contentMode: .fit)
+                            .frame(width: 50, height: 400)
+                            .padding(.horizontal, -12)
+                    }
                 }
-                .foregroundColor(Color(uiColor: .systemGray6))
-                .padding(.horizontal)
-                VStack {
-                    makeHStack("Staff:", character.hogwartsStaff ? "✔️" : "✖️")
-                    Divider()
-                    makeHStack("Actor:", character.actor)
-                }
-                .foregroundColor(Color(uiColor: .systemGray6))
-                .padding(.horizontal)
             }
             .padding()
         }
@@ -79,7 +90,7 @@ struct InfoDetailsView: View {
         return HStack {
             Text(key)
             Spacer()
-            Text(value)
+            Text(value.capitalized)
             Divider()
         }
     }

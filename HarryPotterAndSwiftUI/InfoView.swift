@@ -48,10 +48,11 @@ struct InfoView: View {
                         Text("Download full data")
                     }
                     .padding(16)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(Color(uiColor: .secondarySystemGroupedBackground))
                     .background(Color.brown)
                     .font(.title2)
                     .bold()
+                    .overlay(Capsule().stroke(lineWidth: 2))
                     .clipShape(Capsule())
                     .shadow(radius: 10)
                 }

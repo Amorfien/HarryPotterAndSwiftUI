@@ -10,17 +10,19 @@ import SwiftUI
 struct HelloView: View {
     var body: some View {
         ZStack{
-            Color(.green)
+//            Color(.green)
+            RadialGradient(colors: [.black, .red, .black], center: .center, startRadius: 50, endRadius: 600)
+//            LinearGradient(colors: [.black, .green, .white], startPoint: .bottom, endPoint: .top)
                 .ignoresSafeArea()
             VStack {
-                Spacer()
+//                Spacer()
                 AsyncImage(url: URL(string: "https://ik.imagekit.io/hpapi/voldemort.jpg"))
                     .clipShape(Capsule(style: .continuous))
-                    .shadow(color: .red, radius: 30, x: 10, y: 10)
-                Spacer()
-                Text("Hello!")
-                    .font(.largeTitle)
-                Spacer()
+//                    .shadow(color: .yellow, radius: 30, x: 10, y: 10)
+//                Spacer()
+//                Text("Hello!")
+//                    .font(.largeTitle)
+//                Spacer()
 
             }
 

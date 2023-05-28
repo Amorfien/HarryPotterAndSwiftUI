@@ -20,6 +20,9 @@ struct InfoRowView: View {
                     .resizable()
                     .scaledToFill()
                     .clipShape(Circle())
+                    .overlay(content: {
+                        Circle().stroke(Color.gray)
+                    })
                     .frame(width: rowHeight - 8, height: rowHeight - 8)
                     .padding(.leading, 4)
             })
@@ -49,8 +52,8 @@ struct InfoRowView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             InfoRowView(character: nonLocalDumbledore, rowHeight: .constant(68))
-//            InfoRowView(character: localCharacters[3])
+            InfoRowView(character: localCharacters[3], rowHeight: .constant(68))
         }
-        .previewLayout(.fixed(width: 300, height: 70))
+        .previewLayout(.fixed(width: 400, height: 68))
     }
 }

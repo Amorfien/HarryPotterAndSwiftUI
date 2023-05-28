@@ -13,7 +13,13 @@ struct SettingsView: View {
     @Binding var titleOn: Bool
 
     @Binding var slider: Double
-    @State private var isChanging = false
+    @State private var isChanging = false {
+        willSet {
+            if newValue == false {
+                sleep(1)
+            }
+        }
+    }
 
     var body: some View {
 
@@ -27,20 +33,25 @@ struct SettingsView: View {
                         .foregroundColor(.yellow)
                         .imageScale(.large)
                 }
+                .padding(.vertical, -10)
             }
             Section {
                 Toggle("Display first screen title", isOn: $titleOn)
                     .padding(.top)
-                Text("Navigation title is " + (titleOn ? "enable" : "disable"))
-                    .padding(.bottom)
-                    .font(.callout)
+                HStack {
+                    Spacer()
+                    Text("navigation title is " + (titleOn ? "enable" : "disable"))
+                        .padding(.top, -10)
+                        .font(.callout)
+                        .foregroundColor(.secondary)
+                }
             }
 
 
 
             Section {
 
-                Text("You can change row width here:")
+                Label("you can change row height here:", systemImage: "rectangle.compress.vertical")
                 Slider(value: $slider , in: 45...150, onEditingChanged: { change in
                     isChanging = change
                 })
@@ -49,7 +60,7 @@ struct SettingsView: View {
                 if isChanging {
                     InfoRowView(character: nonLocalDumbledore, rowHeight: $slider)
                         .overlay {
-                            Rectangle().stroke()
+                            Rectangle().stroke(Color(uiColor: .systemGray))
                         }
                         .padding(.vertical, 30)
                         .padding(.horizontal, -20)
