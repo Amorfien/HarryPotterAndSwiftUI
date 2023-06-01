@@ -9,12 +9,15 @@ import SwiftUI
 
 struct QuizeView: View {
 
-    @State private var start = false
-
     @Binding var listSource: [Person]
 
+    @State private var start = false
     @State private var quizePerson: Person = nonLocalDumbledore
     @State private var score: Int = 0
+
+    @State private var rightAnswer: Bool = false
+
+    @State private var onApearVar = false
 
 
     var body: some View {
@@ -34,90 +37,128 @@ struct QuizeView: View {
             VStack {
                 HStack {
                     Button {
-                        if start && quizePerson.house == .gryffindor {
-                            score += 1
+                        rightAnswer = quizePerson.house == .gryffindor
+                        if start && rightAnswer {
+                            withAnimation {
+                                score += 1
+                            }
                         }
                         quizePerson = imagePersons.randomElement()!
                     } label: {
                         Image("Gryffindor")
                             .houseImage()
+                            .opacity(start ? 1 : 0.4)
+
                     }
                     Spacer()
-                    Text(String(score))
-                        .font(.largeTitle)
-                        .padding(5)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 5).stroke(Color(.black), lineWidth: 1)
-                        }
-                    Spacer()
+                    if start {
+                        Text(String(score))
+                            .font(.largeTitle)
+                            .padding(8)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 5).stroke(Color(rightAnswer ? .green : .black), lineWidth: rightAnswer ? 4 : 2)
+                            }
+                            .animation(.easeInOut(duration: 0.5), value: rightAnswer)
+                        Spacer()
+                    }
                     Button {
-                        if start && quizePerson.house == .slytherin {
-                            score += 1
+                        rightAnswer = quizePerson.house == .slytherin
+                        if start && rightAnswer {
+                            withAnimation {
+                                score += 1
+                            }
                         }
                         quizePerson = imagePersons.randomElement()!
                     } label: {
                         Image("Slytherin")
                             .houseImage()
+                            .opacity(start ? 1 : 0.4)
                     }
                 }
                 Spacer()
 
                 if !start {
                     Button {
-                        start = true
+                        withAnimation {
+                            start = true
+                        }
                     } label: {
 
                         Image(systemName: "play.square")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 220)
+                            .padding(15)
+                            .overlay {
+                                RoundedRectangle(cornerRadius: 40).stroke(Color(uiColor: onApearVar ? .systemYellow : .green), lineWidth: onApearVar ? 5 : 10)
+                            } .animation(.easeOut(duration: 1).repeatForever(autoreverses: true), value: onApearVar)
 
                     }
                     .tint(.pink)
-//                    .animation(.easeInOut(duration: 2).repeatForever(autoreverses: true), value: start)
+
                 } else {
-                    Button {
 
-                        quizePerson = imagePersons.randomElement()!
-                    } label: {
+                    AsyncImage(url: URL(string: quizePerson.image), content: { imagePhase in
+                        imagePhase.image?
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 260)
+                            .clipShape(RoundedRectangle(cornerRadius: 20))
+                            .shadow(color: Color(.black), radius: 15)
 
-//                        let person = listSource.randomElement()
-                        AsyncImage(url: URL(string: quizePerson.image), content: { imagePhase in
-                            imagePhase.image?
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .frame(height: 260)
-                                .clipShape(RoundedRectangle(cornerRadius: 20))
-                                .shadow(color: Color(.black), radius: 15)
+                    })
 
-                        })
-                    }
+
                 }
 
                 Spacer()
                 HStack {
                     Button {
-                        if start && quizePerson.house == .hufflepuff {
-                            score += 1
+                        rightAnswer = quizePerson.house == .hufflepuff
+                        if start && rightAnswer {
+                            withAnimation {
+                                score += 1
+                            }
                         }
                         quizePerson = imagePersons.randomElement()!
                     } label: {
                         Image("Hufflepuff")
                             .houseImage()
+                            .opacity(start ? 1 : 0.4)
                     }
                     Spacer()
+                    if start {
+                        Button {
+                            score = 0
+                            start = false
+                        } label: {
+
+                            Image(systemName: "gobackward")
+                                .font(.largeTitle).bold()
+
+                        }
+                        .tint(.black)
+                        Spacer()
+                    }
                     Button {
-                        if start && quizePerson.house == .ravenclaw {
-                            score += 1
+                        rightAnswer = quizePerson.house == .ravenclaw
+                        if start && rightAnswer {
+                            withAnimation {
+                                score += 1
+                            }
                         }
                         quizePerson = imagePersons.randomElement()!
                     } label: {
                         Image("Ravenclaw")
                             .houseImage()
+                            .opacity(start ? 1 : 0.4)
                     }
                 }
             }
 
+        }
+        .onAppear {
+            onApearVar = true
         }
 
     }

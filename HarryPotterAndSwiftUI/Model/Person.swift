@@ -108,7 +108,16 @@ struct Person: Codable, Identifiable {
 //        }
     }
 
+}
 
+extension Person: Equatable {
+    static func == (lhs: Person, rhs: Person) -> Bool {
+        if lhs.id == rhs.id {
+            return true
+        } else {
+            return false
+        }
+    }
 }
 
 enum Gender: String, Codable {
