@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Character: Codable, Identifiable {
+struct Person: Codable, Identifiable {
     let id, name: String
     let alternateNames: [String]
     let species: String

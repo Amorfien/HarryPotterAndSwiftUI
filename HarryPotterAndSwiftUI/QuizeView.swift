@@ -11,7 +11,16 @@ struct QuizeView: View {
 
     @State private var start = false
 
+    @Binding var listSource: [Person]
+
+    @State private var quizePerson: Person = nonLocalDumbledore
+    @State private var score: Int = 0
+
+
     var body: some View {
+        let imagePersons: [Person] = listSource.filter { person in
+            person.image != ""
+        }
 
         ZStack {
             LinearGradient(colors: [.cyan, .blue, .indigo, .mint, .white], startPoint: .top, endPoint: .bottom)
@@ -20,15 +29,36 @@ struct QuizeView: View {
             Image("houses")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .opacity(0.4)
+                .opacity(0.3)
 
             VStack {
                 HStack {
-                    Image("Gryffindor")
-                        .houseImage()
+                    Button {
+                        if start && quizePerson.house == .gryffindor {
+                            score += 1
+                        }
+                        quizePerson = imagePersons.randomElement()!
+                    } label: {
+                        Image("Gryffindor")
+                            .houseImage()
+                    }
                     Spacer()
-                    Image("Slytherin")
-                        .houseImage()
+                    Text(String(score))
+                        .font(.largeTitle)
+                        .padding(5)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 5).stroke(Color(.black), lineWidth: 1)
+                        }
+                    Spacer()
+                    Button {
+                        if start && quizePerson.house == .slytherin {
+                            score += 1
+                        }
+                        quizePerson = imagePersons.randomElement()!
+                    } label: {
+                        Image("Slytherin")
+                            .houseImage()
+                    }
                 }
                 Spacer()
 
@@ -37,32 +67,54 @@ struct QuizeView: View {
                         start = true
                     } label: {
 
-                        Image(systemName: "questionmark.square.dashed")
+                        Image(systemName: "play.square")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 220)
 
                     }
-                    .tint(.black)
+                    .tint(.pink)
+//                    .animation(.easeInOut(duration: 2).repeatForever(autoreverses: true), value: start)
                 } else {
-                    AsyncImage(url: URL(string: "https://static.wikia.nocookie.net/harrypotter/images/c/c8/Nymphadora_Tonks_DH_promo_headshot_.jpg"), content: { imagePhase in
-                        imagePhase.image?
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: 260)
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
-                            .shadow(color: Color(.black), radius: 15)
+                    Button {
 
-                    })
+                        quizePerson = imagePersons.randomElement()!
+                    } label: {
+
+//                        let person = listSource.randomElement()
+                        AsyncImage(url: URL(string: quizePerson.image), content: { imagePhase in
+                            imagePhase.image?
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 260)
+                                .clipShape(RoundedRectangle(cornerRadius: 20))
+                                .shadow(color: Color(.black), radius: 15)
+
+                        })
+                    }
                 }
 
                 Spacer()
                 HStack {
-                    Image("Hufflepuff")
-                        .houseImage()
+                    Button {
+                        if start && quizePerson.house == .hufflepuff {
+                            score += 1
+                        }
+                        quizePerson = imagePersons.randomElement()!
+                    } label: {
+                        Image("Hufflepuff")
+                            .houseImage()
+                    }
                     Spacer()
-                    Image("Ravenclaw")
-                        .houseImage()
+                    Button {
+                        if start && quizePerson.house == .ravenclaw {
+                            score += 1
+                        }
+                        quizePerson = imagePersons.randomElement()!
+                    } label: {
+                        Image("Ravenclaw")
+                            .houseImage()
+                    }
                 }
             }
 
@@ -73,6 +125,6 @@ struct QuizeView: View {
 
 struct HelloView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizeView()
+        QuizeView(listSource: .constant(localCharacters))
     }
 }

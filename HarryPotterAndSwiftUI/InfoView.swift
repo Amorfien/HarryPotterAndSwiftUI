@@ -14,7 +14,7 @@ struct InfoView: View {
     @Binding var rowHeight: Double
 
     @State private var fullData = false
-    @State private var listSource = localCharacters
+    @Binding var listSource: [Person]// = localCharacters
 
     var body: some View {
         // navigation view for master - details architecture
@@ -66,6 +66,6 @@ struct InfoView: View {
 
 struct InfoView_Previews: PreviewProvider {
     static var previews: some View {
-        InfoView(titleOn: true, rowHeight: .constant(68))
+        InfoView(titleOn: true, rowHeight: .constant(68), listSource: .constant(localCharacters))
     }
 }

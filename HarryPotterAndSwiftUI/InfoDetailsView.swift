@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InfoDetailsView: View {
 
-    var character: Character
+    var character: Person
 
     var body: some View {
         ScrollView {

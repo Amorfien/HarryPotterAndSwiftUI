@@ -13,15 +13,17 @@ struct ContentView: View {
 //    @State private var slider = 68.0
     @AppStorage("height") private var slider = 68.0
 
+    @State private var dataSource = localCharacters
+
     var body: some View {
 
         TabView() {
 
-            InfoView(titleOn: titleOn, rowHeight: $slider)
+            InfoView(titleOn: titleOn, rowHeight: $slider, listSource: $dataSource)
                 .tabItem {
                     Label("Database", systemImage: "person.3.fill")
                 }
-            QuizeView()
+            QuizeView(listSource: $dataSource)
                 .tabItem {
                     Label("Quize", systemImage: "questionmark.app")
                 }

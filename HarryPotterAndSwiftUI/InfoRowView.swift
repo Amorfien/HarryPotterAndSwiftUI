@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InfoRowView: View {
 
-    let character: Character
+    let character: Person
     @Binding var rowHeight: Double// = 68.0
 
     var body: some View {
