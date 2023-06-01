@@ -78,6 +78,28 @@ struct Character: Codable, Identifiable {
             case "Albus Dumbledore": self.image = "https://pm1.narvii.com/7743/aad5ab12b083be42919c06becc53d9cfb1e24d0dr1-750-563v2_00.jpg"
             case "James Potter": self.image = "https://static.wikia.nocookie.net/harrypotter/images/1/10/James_Potter_I_Deathly_Hallows.jpg"
             case "Lily Potter": self.image = "https://static.wikia.nocookie.net/harrypotter/images/c/ce/Lily_Potter1.jpg"
+            case "Vernon Dursley": self.image = "https://static.wikia.nocookie.net/harrypotter/images/2/20/Vernon_Dursley.jpg"
+            case "Petunia Dursley": self.image = "https://static.wikia.nocookie.net/harrypotter/images/6/64/Petunia_DH1.png"
+            case "Dudley Dursley": self.image = "https://static.wikia.nocookie.net/harrypotter/images/1/19/Dudley_DH.png"
+
+            case "Newt Scamander": self.image = "https://static.wikia.nocookie.net/harrypotter/images/3/36/Newton_Scamander_Profile_crop.png"
+            case "Hedwig": self.image = "https://static.wikia.nocookie.net/harrypotter/images/1/1e/Hedwig_Snowy_Owl_PM.png"
+            case "Molly Weasley": self.image = "https://static.wikia.nocookie.net/harrypotter/images/3/3c/Molly_Weasley_Deathly_Hallows.jpg"
+            case "Percy Weasley": self.image = "https://static.wikia.nocookie.net/harrypotter/images/b/bc/Percy_WeasleyDH.jpg"
+            case "Fred Weasley": self.image = "https://static.wikia.nocookie.net/harrypotter/images/9/90/Fred_HS_TDH_promo.jpg"
+            case "George Weasley": self.image = "https://static.wikia.nocookie.net/harrypotter/images/2/2a/DH_promo_front_closeup_George_Weasley.jpg"
+            case "Seamus Finnegan": self.image = "https://static.wikia.nocookie.net/harrypotter/images/9/9c/Seamus_FinniganDH2.jpg"
+
+            case "Padma Patil": self.image = "https://static.wikia.nocookie.net/harrypotter/images/4/45/PadmaPatil.png"
+            case "Parvati Patil": self.image = "https://static.wikia.nocookie.net/harrypotter/images/3/31/Parvati_Patil_headshot.jpg"
+            case "Bloody Baron": self.image = "https://static.wikia.nocookie.net/harrypotter/images/5/55/Bloody_Baron.jpg"
+            case "Pomona Sprout": self.image = "https://static.wikia.nocookie.net/harrypotter/images/6/6e/Pomona_Sprout_DHF2.jpg"
+            case "Filius Flitwick": self.image = "https://static.wikia.nocookie.net/harrypotter/images/4/4b/Flitwickarmourbattle.png"
+            case "Marcus Flint": self.image = "https://static.wikia.nocookie.net/harrypotter/images/8/80/Monmarcus.jpg/revision/latest?cb=20100327164729"
+            case "Peter Pettigrew": self.image = "https://static.wikia.nocookie.net/harrypotter/images/e/e4/Pettigrew_DH1.jpg"
+            case "Nymphadora Tonks": self.image = "https://static.wikia.nocookie.net/harrypotter/images/c/c8/Nymphadora_Tonks_DH_promo_headshot_.jpg"
+
+
             default: return
             }
         }

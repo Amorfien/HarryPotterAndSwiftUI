@@ -21,9 +21,9 @@ struct ContentView: View {
                 .tabItem {
                     Label("Database", systemImage: "person.3.fill")
                 }
-            HelloView()
+            QuizeView()
                 .tabItem {
-                    Label("Hello", systemImage: "globe")
+                    Label("Quize", systemImage: "questionmark.app")
                 }
             SettingsView(titleOn: $titleOn, slider: $slider)
                 .tabItem {
@@ -31,7 +31,7 @@ struct ContentView: View {
                 }
 
         }
-        .tint(.primary)
+//        .tint(.primary)
 
     }
 }
