@@ -13,17 +13,19 @@ struct ContentView: View {
 //    @State private var slider = 68.0
     @AppStorage("height") private var slider = 68.0
 
+    @State private var dataSource = localCharacters
+
     var body: some View {
 
         TabView() {
 
-            InfoView(titleOn: titleOn, rowHeight: $slider)
+            InfoView(titleOn: titleOn, rowHeight: $slider, listSource: $dataSource)
                 .tabItem {
                     Label("Database", systemImage: "person.3.fill")
                 }
-            HelloView()
+            QuizeView(listSource: $dataSource)
                 .tabItem {
-                    Label("Hello", systemImage: "globe")
+                    Label("Quize", systemImage: "questionmark.app")
                 }
             SettingsView(titleOn: $titleOn, slider: $slider)
                 .tabItem {
@@ -31,7 +33,7 @@ struct ContentView: View {
                 }
 
         }
-        .tint(.primary)
+//        .tint(.primary)
 
     }
 }

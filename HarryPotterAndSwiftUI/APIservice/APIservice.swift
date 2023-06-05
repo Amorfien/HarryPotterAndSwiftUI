@@ -29,13 +29,13 @@ final class APIservice {
 
     }
 
-    func getAllCharacters(completion: @escaping ([Character]) -> Void) {
+    func getAllCharacters(completion: @escaping ([Person]) -> Void) {
 
         makeTask(.allCharacters) { result in
             switch result {
             case .success(let data):
                 do {
-                    let characters = try JSONDecoder().decode([Character].self, from: data)
+                    let characters = try JSONDecoder().decode([Person].self, from: data)
                     completion(characters)
                 } catch {}
             case .failure:
